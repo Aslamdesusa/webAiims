@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Complaints</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="img/AIIMS.png" />
+
+  <style type="text/css">
+    body{
+      margin: 20px;
+    }
+    .btn-info, .btn-primary{
+      margin-bottom: 5px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+    }
+    table th{
+      background: #6698ff;
+      color: #fff;
+    }
+
+    table caption {
+      padding: .5em 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      table caption {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+
+    .p {
+      text-align: center;
+      padding-top: 140px;
+      font-size: 14px;
+    }
+    .header {
+      position: fixed;
+      width: 100%;
+    }
+    .progress-container {
+      width: 97%;
+      margin-top: -20px;
+      height: 5px;
+      background: #ccc;
+    }
+
+    .progress-bar {
+      height: 5px;
+      background: #4caf50;
+      width: 0%;
+    }
+    .filterbutton{
+      background: #337ab7;
+      color: white;
+      width: 100%;
+      height: 33px;
+      margin-top: 8px;
+      border-radius: 5px;
+      outline: none;
+      margin-left: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>  
+</div>
+ <div style="width: 80px;" class="pull-right">
+        <button id="bloding" align="right" style="outline: none; margin-bottom: 20px;" type="button" class="btn btn-danger">Log out</button>
+  </div>
+
+<div class="containerr"></div>
+
+<div class="container">
+  <!-- <input type="text" class="form-control" style="width: 50%;" placeholder="andon.in/manager"> -->
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+      <div class="col-md-2">
+        <button id="btncom" type="button" class="btn btn-info">Complaints</button>
+        <div class="container11"></div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info">Reports</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info">Machines</button>
+      </div>
+      <div class="col-md-2">
+       <a href="email.html"><button id="bnutton" type="button" class="btn btn-info">Email Addresses</button></a>
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-1">
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-2">
+         <select class="filterbutton" name="sort-news" id="sort-news">
+              <option value="all">Filter by</option>
+              <option value="Pending">Pending</option>
+              <option value="On Working">On Working</option>
+              <option value="Completed">Completed</option>
+          </select> 
+        <!-- <button style="margin: 5px;" type="button" class="btn btn-primary">Filter By</button> -->
+      </div>
+      <div class="col-md-2">
+
+        <button style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addComplaint" data-whatever="@mdo">Add Complaint</button>
+      </div>
+    </div>
+
+
+
+<!-- ==================================================================================================== -->
+
+<!-- DELETE MODEL BOX -->
+
+<!-- Modalbox here -->
+    <!-- <div class="container"> -->
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Delete Entry</h4>
+        </div>
+        <div class="modal-footer">
+          <button id="dlt" type="button" class="btn btn-danger dll" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================================================== -->
+
+<!-- EDIT MODEL BOX -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Entery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Edit Machine ID</label>
+            <input type="text" class="form-control" id="machineid" name="machineid">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Edit Phone Number</label>
+            <input type="text" class="form-control" id="number" name="number">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Edit Comment</label>
+            <textarea class="form-control" id="message" name="message"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Status</label>
+            <input type="text" class="form-control" id="statusmsg" name="Status">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="updatecomplaint">Save Change</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================================================== -->
+
+
+<!-- ADD COMPLAINT BY SUPER USER MODEL BOX-->
+<div class="modal fade" id="addComplaint" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD COMPLAINT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Machine ID</label>
+            <input type="text" class="form-control" id="MachineID">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Phone Number</label>
+            <input type="text" class="form-control" id="PhoneNumber">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Comment</label>
+            <textarea class="form-control" id="CommentMsg"></textarea>
+          </div>
+          <div>
+            <label for="message-text" class="col-form-label">Status</label>
+            <select class="filterbutton" name="sort-news" id="shortcut">
+              <option value="Pending">Pending</option>
+              <option value="On Working">On Working</option>
+              <option value="Completed">Completed</option>
+          </select> 
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="AddComplaint" type="button" class="btn btn-primary">Save Change</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ====================================================================================================== -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="complainttable" >
+          <thead>
+            <tr>
+              <th>Complaint ID</th>
+              <th>Machine ID</th>
+              <th>Your Number</th>
+              <th>Comment</th>
+              <th>Date/Time</th>
+              <th>Machine Name</th>
+              <th>Machine Location</th>
+              <th>Service Contract</th>
+              <th>Concerned Person</th>
+              <th>Status</th>
+              <th>Date of  Status Change</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="updatetable">
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    
+            
+  
+</div>
+
+</body>
+  <script type="text/javascript" src="app.js"></script>
+  
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Emails</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="img/AIIMS.png" />
+
+  <style type="text/css">
+    body{
+      margin: 20px;
+    }
+    .btn-info, .btn-primary{
+      margin-bottom: 5px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+    }
+    table th{
+      background: #6698ff;
+      color: #fff;
+    }
+
+    table caption {
+      padding: .5em 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      table caption {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+
+    .p {
+      text-align: center;
+      padding-top: 140px;
+      font-size: 14px;
+    }
+    .header {
+      position: fixed;
+      width: 100%;
+    }
+    .progress-container {
+      width: 97%;
+      margin-top: -20px;
+      height: 5px;
+      background: #ccc;
+    }
+
+    .progress-bar {
+      height: 5px;
+      background: #4caf50;
+      width: 0%;
+    }
+    .filterbutton{
+      background: #337ab7;
+      color: white;
+      width: 100%;
+      height: 33px;
+      margin-top: 8px;
+      border-radius: 5px;
+      outline: none;
+      margin-left: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>  
+</div>
+ <div style="width: 80px;" class="pull-right">
+        <button id="bloding" align="right" style="outline: none; margin-bottom: 20px;" type="button" class="btn btn-danger">Log out</button>
+  </div>
+
+<div class="containerr"></div>
+
+<div class="container">
+  <!-- <input type="text" class="form-control" style="width: 50%;" placeholder="andon.in/manager"> -->
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+      <div class="col-md-2">
+        <a href="index2.html"><button id="btncom" type="button" class="btn btn-info">Complaints</button></a>
+        <div class="container11"></div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info">Reports</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info">Machines</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info">Email Addresses</button>
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-1">
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+      </div>
+      
+      <div class="col-md-2">
+
+        <button style="margin: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmail" data-whatever="@mdo">Add Email</button>
+      </div>
+    </div>
+
+
+<!-- ================================================================================================= -->
+    <!-- ADD EMAILS BY SUPER USER MODEL BOX-->
+<div class="modal fade" id="addEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD Email</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email Address</label>
+            <input type="text" class="form-control" id="emailid">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Company Name</label>
+            <input id="companyname" type="text" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="AddEmail" type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ====================================================================================================== -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="complainttable" >
+          <thead>
+            <tr>
+              <th>Email ID</th>
+              <th>Email Address</th>
+              <th>Company Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="updatetable">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    
+            
+  
+</div>
+
+</body>
+  <script type="text/javascript" src="e.js"></script>
+  
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</html>
